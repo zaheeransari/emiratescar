@@ -1,0 +1,68 @@
+<div class="sidebar" data-color="white" data-active-color="danger">
+  <div class="logo">
+    <a routerLink="/" class="simple-text logo-mini">
+      <div class="logo-image-small">
+        <img src="../assets/img/logo-small.png">
+      </div>
+    </a>
+    <a routerLink="/dashboard" class="simple-text logo-normal">
+      Plate & Mobile
+      <!-- <div class="logo-image-big">
+              <img src="../assets/img/logo-big.png">
+            </div> -->
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <!-- <li class="active ">
+        <a routerLink="/">
+          <i class="nc-icon nc-bank"></i>
+          <p>Dashboard</p>
+        </a>
+      </li> -->
+      <li  class="active " *ngIf="userRole==='Employee'">
+          <a routerLink="/admin/carDetailsList">
+            <i  class="nc-icon nc-bank"></i>
+            <p>Car Product List</p>
+          </a>
+        </li>
+      <li *ngIf="userRole==='Admin'">
+        <a routerLink="/productlist">
+          <i class="nc-icon nc-tablet-2"></i>
+          <p>Product List</p>
+        </a>
+      </li>
+      <li *ngIf="userRole==='Admin'">
+        <a routerLink="/productTypeList">
+          <i class="nc-icon nc-tablet-2"></i>
+          <p>Product Type</p>
+        </a>
+      </li>
+      <li *ngIf="userRole==='Admin'">
+        <a routerLink="/productPriceList">
+          <i class="nc-icon nc-tablet-2"></i>
+          <p>Product Price List</p>
+        </a>
+      </li>
+      <li *ngIf="userRole==='Admin'">
+        <a routerLink="/carProductList">
+          <i class="nc-icon nc-tablet-2"></i>
+          <p>Car Product List</p>
+        </a>
+      </li>
+      <li *ngIf="userRole==='Admin'">
+        <a routerLink="/user">
+          <i class="nc-icon nc-single-02"></i>
+          <p>User Profile</p>
+        </a>
+      </li>
+      
+      <li *ngIf="userRole==='Employee'">
+          <a routerLink="/">
+            <i class="nc-icon nc-tablet-2"></i>
+            <p>Go Back Website</p>
+          </a>
+        </li>
+    </ul>
+  </div>
+</div>

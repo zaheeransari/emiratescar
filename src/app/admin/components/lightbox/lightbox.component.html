@@ -1,0 +1,22 @@
+
+<div style="padding-top:50px"></div>
+
+
+
+
+<div class="container">
+
+
+
+  <h3>Imag Gallery</h3>
+  <!-- Content here -->
+   <div class="row">
+
+     <div class="col-sm" *ngFor="let image of album; let i=index">
+      <img [src]="image.thumb" (click)="open(i)" />
+    </div>
+   
+  </div>
+
+</div>
+

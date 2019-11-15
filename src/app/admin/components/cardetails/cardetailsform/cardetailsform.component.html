@@ -1,0 +1,65 @@
+<div class="">
+        <div class="card-body">
+            <form [formGroup]="carProductForm" (submit)="SaveCarProduct()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label">Car name</label>
+                            <input type="text" class="form-control" formControlName="carsProductName1">
+                            <input type="hidden" formControlName="SessionId">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label"> Kilometers</label>
+                            <input type="text" class="form-control" formControlName="carsKilometers">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label">Car Color</label>
+                            <input type="text" class="form-control" formControlName="carsColor">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label">Number of Doors</label>
+                            <input type="text" class="form-control" formControlName="carsDoors">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label">Car price</label>
+                            <input type="text" class="form-control" formControlName="carsPrice">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label">Car description</label>
+                            <input type="text" class="form-control" formControlName="carsProductDescription">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-control-label">Status</label>
+                            <select class="hideLabel form-control" formControlName="isActive" (change)="dllGetCities($event)">
+                                <option value="">Choose IsActive</option>
+                                <!-- <option *ngFor="let item of StatusItem" value="{{item.isActive}}" > {{ item.name }} </option> -->
+                                <option *ngFor="let item of StatusItem" value="{{item.isActive}}" > {{ item.name }} </option>
+                            </select>
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary submitbtn" value="Save" />
+                            <a (click)="cancelBtn()" class="btn btn-primary">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- <pre>
+              {{productForm.value| json}}
+            </pre> -->
+    </div>

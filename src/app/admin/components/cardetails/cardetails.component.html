@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title header-form">Car Details View</h5>
+          <div class="row space">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label type="text" class="form-control">{{carItem.carsProductName1}}</label>
+                  </div>
+                  <div class="form-group">
+                    <label type="text" class="form-control">{{carItem.sessionId}}</label>
+                  </div>
+                  <div class="form-group">
+                    <label type="text" class="form-control">{{carItem.carsPrice}}</label>
+                  </div>
+                  <div class="form-group">
+                    <label type="text" class="form-control">{{carItem.carsKilometers}}</label>
+                  </div>
+                  <div class="form-group">
+                    <label type="text" class="form-control">{{carItem.isActive ? 'Active':'InActive'}}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                  <span class="btn btn-default btn-file" style="border: 1px solid red;">
+                    Add Images <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+                  </span>
+                  <a (click)="backBtn()" class="goback">Go Back</a>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="loader" class="imgLoader">
+              Loading... <img src="assets/img/lightbox-ico-loading.gif" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-xs-12" *ngFor="let item of carAlbum; let i=index">
+              <div class="text-center">
+                <img [src]="item.thumb" (click)="open(i)" />
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

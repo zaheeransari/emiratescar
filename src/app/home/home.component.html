@@ -1,0 +1,185 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <h3 class="pb-3 mb-4 font-italic border-bottom">
+                Emirates Car
+                <span>
+                    <a class="border-bottom" routerLink="login" class="btnAdd">POST FREE ADD</a>
+                </span>
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card shadow-sm h-md-250">
+                        <div class="header-para">
+                            <div class="categories">
+                                <div class="box_wrapper"
+                                    style="background-color: #E4E4E4; padding: 3px; text-align: center;  color: #000; font-weight: 600;">
+                                    <p class="searchtext">Search</p>
+                                </div>
+                                <div class="list-categories">
+                                    <div id="search-widget-wrapper">
+                                        <div id="search-widget">
+                                            <form method="get" id="search-widget-form">
+                                                <div id="search-content">
+                                                    <div class="widget-dropdown" id="search-content-site">
+                                                        <div class="search-dropdown">
+                                                            <select id="site:swfield" name="site">
+                                                                <option value="--">All Cities</option>
+                                                                <option value="3">Abu Dhabi</option>
+                                                                <option value="14">Ajman</option>
+                                                                <option value="39">Al Ain</option>
+                                                                <option value="2" selected="selected">Dubai</option>
+                                                                <option value="13">Fujairah</option>
+                                                                <option value="11">Ras al Khaimah</option>
+                                                                <option value="12">Sharjah</option>
+                                                                <option value="15">Umm al Quwain</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-dropdown" id="search-content-s">
+                                                        <div class="search-dropdown">
+                                                            <select id="s:swfield" name="s">
+                                                                <option value="--">All of UAE</option>
+                                                                <option value="MT" selected="selected">Motors</option>
+                                                                <option value="CL">Classifieds</option>
+                                                                <option value="SP">Property For Sale</option>
+                                                                <option value="RP">Property For Rent</option>
+                                                                <option value="JB">Jobs</option>
+                                                                <option value="JW">Job Seekers</option>
+                                                                <option value="CO">Community</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="widget-dropdown no-arrow" id="search-content-rc">
+                                                        <div class="search-dropdown">
+                                                            <select id="rc:swfield" name="rc">
+                                                                <option value="--">&gt; All Categories</option>
+                                                                <option value="140">Used Cars for Sale</option>
+                                                                <option value="141">Auto Accessories &amp; Parts
+                                                                </option>
+                                                                <option value="229">Boats</option>
+                                                                <option value="2122">Heavy Vehicles</option>
+                                                                <option value="890">Motorcycles</option>
+                                                                <option value="2395">Number Plates</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-dropdown hidden-element no-arrow"
+                                                        id="search-content-c1">
+                                                        <div class="search-dropdown">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-dropdown hidden-element no-arrow"
+                                                        id="search-content-c2">
+                                                        <div class="search-dropdown">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="widget-dropdown hidden-element no-arrow"
+                                                        id="search-content-c3">
+                                                        <div class="search-dropdown">
+
+                                                        </div>
+                                                    </div>
+                                                    <div id="search-loading-icon"><span>&nbsp;</span></div>
+                                                    <div class="fields">
+                                                    </div>
+                                                    <div id="keywords" style="text-align: center;">
+                                                        <label class="heading" style="display:none;">
+                                                            Keywords
+                                                        </label>
+                                                        <span id="clear-basic-keywords" style="display:none;"
+                                                            class="clear-link">
+                                                            clear
+                                                        </span>
+                                                        <input id="id_keywords" type="text" name="keywords" value=""
+                                                            class="text-field">
+                                                        <input id="is-basic-search-widget" value="1"
+                                                            name="is_basic_search_widget" type="hidden">
+                                                    </div>
+                                                    <input type="hidden" name="is_search" value="1">
+                                                    <input type="submit" value="Search" id="search-button"
+                                                        class="lite-blue awesome"
+                                                        data-tr-event-name="search_button_clicked">
+
+                                                </div>
+                                                <div id="search-advanced">
+                                                    <div id="advanced-search-header" style="display:none;">
+                                                        <input type="submit" value="Advanced Options"
+                                                            id="advanced-search-header-button"
+                                                            onclick="return dbzglobal_event_adapter(this,'advanced-search-header-button');"
+                                                            data-tr-event-name="search_button_clicked">
+                                                        <span class=""
+                                                            id="advanced-search-header-icon:advanced-search-header">
+                                                            <strong id="advanced-option-symbol:advanced-search-header">
+
+                                                                +
+
+                                                            </strong>
+                                                        </span>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12" *ngFor="let item of carItem">
+                    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                        <img *ngIf="item.carsImages" class="card-img-right flex-auto d-lg-block"
+                            alt="Thumbnail [300x250]" src="{{item.carsImages}}">
+                        <img *ngIf="!item.carsImages" class="card-img-right flex-auto d-lg-block"
+                            alt="Thumbnail [300x250]" src="assets/images/demo.png">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <strong class="d-inline-block mb-2 text-success">{{item.carsProductName1}}</strong>
+                            <!-- <h6 class="mb-0">
+                                <a class="text-dark" href="#">Food for Thought: Diet and Brain Health</a>
+                            </h6> -->
+                            <div class="mb-1 text-muted small"> </div>
+                            <p class="mb-1 text-muted small" style="width: 100%">Year
+                                <b>{{item.updatedDate  | date: 'yyyy'}}</b><span style="float: right">Door
+                                    <b>{{item.carsDoors}}</b></span></p>
+                            <p class="mb-1 text-muted small" style="width: 100%">Km <b>{{item.carsKilometers}}</b><span
+                                    style="float: right">Color <b>{{item.carsColor}}</b></span></p>
+                            <p class="card-text mb-auto bottomspace">This is a wider card with supporting text below as
+                                a natural
+                                lead-in to
+                                additional content.</p>
+                            <p class="mb-1 text-muted small" style="width: 100%">
+                                <a class="btn btn-outline-success btn-sm"
+                                    (click)="homeDetails(item.carsProductId)">Continue
+                                    reading</a>
+                                <span style="float: right;color: red;font-size: 20px;">AED
+                                    <b>{{item.carsPrice}}</b></span>
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div *ngIf="loader" class="imgLoader">
+                    Loading... <img src="assets/img/lightbox-ico-loading.gif" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <a href="emiratescars.com/" class="mx-auto pb-3 text-center">Copyright © {{currentYear}} emiratescars.com</a>
+</div>

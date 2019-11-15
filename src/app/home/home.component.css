@@ -1,0 +1,85 @@
+#search-widget-wrapper {
+    float: left;
+    width: 100%;
+}
+#search-widget #search-content {
+    background-color: #E4E4E4;
+    padding: 10px 12px;
+}
+#search-widget .widget-dropdown {
+    margin-bottom: 6px;
+}
+#search-widget select {
+    margin-bottom: 8px;
+    width: 100%;
+}
+#foxpush_lead_form .fp_form_inputs input, select, textarea {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #bebebe;
+    padding: 7px;
+    margin: 0;
+    outline: 0;
+}
+#advanced-search-content input#search-button-mini, #search-widget #search-button {
+    background-color: #005f96;
+    background-image: none;
+    border-color: #00446b;
+    border-style: solid;
+    border-width: 0 0 3px;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    height: 40px;
+    letter-spacing: normal;
+    margin: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+.logo a{
+    font-size: 30px;
+    color: #000;
+    font-weight: 600;
+}
+.button {    
+    padding: 7px 110px;
+    cursor: pointer;
+}
+.searchtext{
+    color: #333;
+    font-size: 20px;
+    padding: 12px 0 0;
+    margin-bottom: 0px;
+    text-align: center;
+}
+.bottomspace{
+    margin-bottom: 20px !important;
+}
+.imgLoader{
+    position: absolute;
+    left:45%;
+    top:20%;
+}
+.card img{
+    width: 250px;
+}
+.btnAdd{
+    background: #fcec52;
+    border: 1px solid #e1b80f;
+    padding: 10px 20px;
+    border-radius: 2px;
+    font-weight: 700;
+    font-size: 12px;   
+    float: right;
+    margin-top: 7px!important;
+    color: #000000;
+}
+@media (max-width:480px){
+	.card img{
+		height: 250px;
+		width: 100% !important;
+	}
+}

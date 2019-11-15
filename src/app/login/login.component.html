@@ -1,0 +1,38 @@
+<div class="container loginlayout">
+    <div class="row headerlayout">
+        <h1><i class="fa fa-lock" aria-hidden="true"></i> Login</h1>
+
+    </div><br /><br />
+    <form>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Username" [(ngModel)]="loginViewModel.UserName"
+                name="UserName" autofocus="autofocus">
+        </div><br />
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-key icon"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="Password" [(ngModel)]="loginViewModel.Password"
+                name="Password">
+        </div><br />
+        <span class="text-danger">{{loginError}}&nbsp;</span>
+        <button class="btn btn-success loginpadd" (click)="onLoginClick($event)"><span
+                class="glyphicon glyphicon-off"></span>Login</button>
+
+        <br />
+        <div>
+            <div style="border:1px solid black;height:1px;"></div>
+        </div><br />
+        <div *ngIf="loader" class="imgLoader">
+                Loading... <img src="assets/img/lightbox-ico-loading.gif" />
+            </div>
+        <div class="footer">
+            <p>Don't have an Account! <a routerLink="/registration">Sign Up Here</a></p>
+            <p>Forgot <a routerLink="">Password?</a></p>
+        </div>
+    </form>
+</div>
