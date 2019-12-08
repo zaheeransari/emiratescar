@@ -11,8 +11,7 @@ const routes: Routes = [
   //{ path: "", redirectTo: "login", pathMatch: "full" },
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent },
-  { path: "registration", component: SignUpComponent },
-  { path: "homeDetails/:id", component: HomeDetailsComponent },
+  { path: "registration", component: SignUpComponent }, 
   {
     path: 'admin', component: ContentComponent, canActivate: [ CanActivateGuardService ], data: { expectedRole: "Employee" }, children: [
       // lazy routing
