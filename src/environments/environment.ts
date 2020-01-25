@@ -12,8 +12,9 @@ BaseURI: 'http://php.emiratescar.ae/api/'
 export const production = false;
 //export const BaseURI='http://php.emiratescar.ae/api/';
 //export const BaseURI='http://webapi.emiratescar.ae/api/';
-export const BaseURI= 'http://zaheeransari.gearhostpreview.com/api/';
-//export const BaseURI= 'http://localhost:52268/api/';
+//export const BaseURI= 'http://zaheeransari.gearhostpreview.com/api/';
+export const BaseURI= 'http://localhost:36106/api/';
+//export const BaseURI= 'http://webapi.inuae.ae/api/';
 
 /*
  * For easier debugging in development mode, you can import the following file

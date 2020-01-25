@@ -2,7 +2,7 @@
 	<div class="row">
 		<h1><i class="fa fa-lock" aria-hidden="true"></i> Sign Up</h1>
 	</div><br /><br />
-	<form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm.value)">
+	<form [formGroup]="registerform" (submit)="onSubmit(registerform)">
 		<div class="input-group">
 			<div class="input-group-prepend">
 				<span class="input-group-text"><i class="fas fa-user-tie"></i></span>
@@ -13,22 +13,33 @@
 			<div class="input-group-prepend">
 				<span class="input-group-text"><i class="fas fa-user-tie"></i></span>
 			</div>
-			<input type="text" name="" class="form-control" placeholder="username" formControlName="UserName"/>
-		</div><br />
+			<input type="text" name="" class="form-control" placeholder="Username" formControlName="Username" />
+		</div>
+		<div class="input-group">
+			<span class="text-danger"
+				*ngIf="registerform.get('Username').invalid && (registerform.get('Username').dirty || registerform.get('Username').touched ) && registerform.get('Username').errors?.uniqueEmail">Username
+				already exists</span>
+		</div>
 		<div class="input-group">
 			<div class="input-group-prepend">
 				<span class="input-group-text"><i class="fas fa-user-tie"></i></span>
 			</div>
-			<input type="text" name="" class="form-control" placeholder="email" formControlName="Email"/>
-		</div><br />
+			<input type="text" name="" class="form-control" placeholder="email" formControlName="Email" />
+		</div>
+		<div class="input-group">
+			<div class="input-group-prepend">
+				<span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+			</div>
+			<input type="text" name="" class="form-control" placeholder="Mobile" formControlName="Mobile" />
+		</div>
 		<div class="input-group">
 			<div class="input-group-prepend">
 				<span class="input-group-text"><i class="fa fa-key icon"></i></span>
 			</div>
-			<input type="Password" name="" class="form-control" placeholder="password" formControlName="Password"/>
+			<input type="Password" name="" class="form-control" placeholder="password" formControlName="Password" />
 		</div><br />
 		<input type="submit" name="submit" class="btn btn-success" value="Registration">
-		
+
 	</form>
-	
+
 </div>

@@ -30,15 +30,16 @@ export class CardetailsComponent implements OnInit {
   ngOnInit() {
     this.getCarDetailsView();
   }
-  getCarDetailsView() {
+  getCarDetailsView() {debugger
     this.loader = true;
-    this.rest.fetch("CarsProduct/UserGetDetails/" + this.id)
+    this.rest.fetch("carsProduct/" + this.id)
       .subscribe(res => {
         debugger
         this.carItem = res;
-        this.carImages = res.carImagesList;
-        this.totalCars = res.carImagesList.length;
-        this.getImages();
+        console.log("carItem", res, this.carImages);
+        //this.carImages = res.carImagesList;
+        //this.totalCars = res.carImagesList.length;
+        //this.getImages();
         this.loader = false;
         console.log("carItem", res, this.carImages);
       })

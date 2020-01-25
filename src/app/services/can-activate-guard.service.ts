@@ -12,11 +12,9 @@ export class CanActivateGuardService implements CanActivate
   {
   }
 
-  canActivate(route: ActivatedRouteSnapshot) : boolean
-  {
-    debugger
+  canActivate(route: ActivatedRouteSnapshot) : boolean{
     console.log(this.router.url);
-    var token = sessionStorage.getItem("currentUser")? JSON.parse(sessionStorage.getItem("currentUser")).token : null;
+    var token = sessionStorage.getItem("access_token");
     if (token)
     {
       return true; //the user can navigate to the particular route

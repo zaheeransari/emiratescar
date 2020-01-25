@@ -8,7 +8,7 @@ import { BaseURI } from 'src/environments/environment';
 })
 export class RestService {
   constructor(private httpClient: HttpClient) { }
-  fetch(url): Observable<any> {
+  fetch(url): Observable<any> {debugger
     return this.httpClient.get(BaseURI + url);
   }
   post(url, data): Observable<any> {

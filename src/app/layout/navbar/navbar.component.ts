@@ -9,7 +9,7 @@ export class NavbarComponent implements OnInit {
   userRole
   constructor() { }
 
-  ngOnInit() {debugger
+  ngOnInit() {
     this.userRole = sessionStorage.getItem("role")
   }
 

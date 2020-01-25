@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomValidatorsService } from '../services/custom-validators.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,50 +12,48 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
 
-  userForm: FormGroup;
+  registerform: FormGroup;
+  password = 'password';
+  registerMsg = false;
+
   constructor(
-    public service: UserService, 
+    private fb: FormBuilder,
+    public service: UserService,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder,
-    private router:Router
-    ) { }
+    private customValidatorsService: CustomValidatorsService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.InitializeRegistration();
+    this.buildForm();
   }
-  InitializeRegistration() {
-    this.userForm = this.formBuilder.group({
-      'FullName': [null, Validators.required],
-      'UserName': [null, Validators.required],
-      'Email': [null, Validators.required],
-      'Password': [null, Validators.required]
+  buildForm() {
+    this.registerform = this.fb.group({
+      FullName: ['', [Validators.required]],
+      Mobile: ['', [Validators.required]],
+      Username: [null, [Validators.required], [this.customValidatorsService.DuplicateEmailValidator()], { updateOn: 'blur' }],
+      Email: [null, [Validators.required], [this.customValidatorsService.DuplicateEmailValidator()], { updateOn: 'blur' }],
+      Password: ['', [Validators.required]]
     });
   }
 
-  onFormSubmit(form: NgForm) {debugger
-    this.service.register(form).subscribe(
+  onSubmit(form: FormGroup) {
+    this.service.register(form.value).subscribe(
       (res: any) => {
-        if (res.succeeded) {
-          this.service.formModel.reset();
+        debugger
+        if (res == null) {
+          this.registerform.reset();
+          //this.service.formModel.reset();
           this.toastr.success('New user created!', 'Registration successful.');
-        } else {
-          res.errors.forEach(element => {
-            switch (element.code) {
-              case 'DuplicateUserName':
-                this.toastr.error('Username is already taken','Registration failed.');
-                break;
-
-              default:
-              this.toastr.error(element.description,'Registration failed.');
-                break;
-            }
-          });
+        }
+        else {
+          this.toastr.success(res.error);
         }
       },
       err => {
         console.log(err);
       }
     );
-  }
-  
+  } 
+
 }

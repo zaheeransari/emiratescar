@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpBackend } from '@angular/common/http';
+import { HttpClient, HttpBackend, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from "@auth0/angular-jwt";
@@ -20,20 +20,30 @@ export class LoginService {
   role: string = null;
 
   public Login(loginViewModel: LoginViewModel): Observable<any> {
+    var data = {
+      userName: loginViewModel.UserName,
+      password: loginViewModel.Password,
+      // required when signing up with username/password
+      grant_type: "password"
+    };
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    }
     debugger
     this.httpClient = new HttpClient(this.httpBackend);
-    return this.httpClient.post<any>(BaseURI + "authenticate", loginViewModel, { responseType: "json", observe: "response" })
+    return this.httpClient.post<any>(BaseURI + "token", this.toUrlEncodedString(data), httpOptions)
       .pipe(map(response => {
         debugger
         if (response) {
-          this.currentUserName = response.body.userName;
-          this.role = response.body.role;
+          this.currentUserName = response.EmailAddress;          
           sessionStorage.setItem("email", this.currentUserName);
-          sessionStorage.setItem("role", this.role);
-          sessionStorage.currentUser = JSON.stringify(response.body);
-          sessionStorage.XSRFRequestToken = response.headers.get("XSRF-REQUEST-TOKEN");
+          sessionStorage.setItem("access_token", response.access_token);
+          //sessionStorage.currentUser = JSON.stringify(response.body);
+          //sessionStorage.XSRFRequestToken = response.headers.get("XSRF-REQUEST-TOKEN");
         }
-        return response.body;
+        return response;
       }));
   }
 
@@ -51,9 +61,9 @@ export class LoginService {
       }));
   }
 
-  getUserByEmail(Email: string): Observable<any> {
+  getUserByEmail(email: string): Observable<any> {debugger
     this.httpClient = new HttpClient(this.httpBackend);
-    return this.httpClient.get<any>(BaseURI + "getUserByEmail/" + Email, { responseType: "json" });
+    return this.httpClient.get<any>(BaseURI + "user/checkemail/" + email, { responseType: "json" });
   }
 
   public Logout() {
@@ -69,6 +79,19 @@ export class LoginService {
     else {
       return true; //token is valid
     }
+  }
+
+  // Converts a Json object to urlencoded format
+  toUrlEncodedString(data: any) {
+    var body = "";
+    for (var key in data) {
+      if (body.length) {
+        body += "&";
+      }
+      body += key + "=";
+      body += encodeURIComponent(data[key]);
+    }
+    return body;
   }
 }
 

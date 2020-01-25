@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseURI } from 'src/environments/environment';
+import { Regsiter } from '../models/register';
 
 @Injectable({
   providedIn: 'root'
@@ -34,16 +35,29 @@ export class UserService {
     }
   }
 
-  register(body) {
-    debugger
-    // var body = {
-    //   UserName: this.formModel.value.UserName,
-    //   Email: this.formModel.value.Email,
-    //   FullName: this.formModel.value.FullName,
-    //   Password: this.formModel.value.Passwords.Password
-    // };
-    return this.http.post(BaseURI + 'ApplicationUser/Register', body);
+  register(register: Regsiter) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.http.post(BaseURI + "user/register", JSON.stringify(register), httpOptions);
   }
+
+  isEmailRegisterd(username: string) {
+    var url = BaseURI + "user/checkusername/" + username;
+    return this.http.get(url);
+  }
+  // register(body) {
+  //   debugger
+  //   // var body = {
+  //   //   UserName: this.formModel.value.UserName,
+  //   //   Email: this.formModel.value.Email,
+  //   //   FullName: this.formModel.value.FullName,
+  //   //   Password: this.formModel.value.Passwords.Password
+  //   // };
+  //   return this.http.post(BaseURI + 'ApplicationUser/Register', body);
+  // }
 
   login(formData) {
     return this.http.post(BaseURI + 'ApplicationUser/Login', formData);

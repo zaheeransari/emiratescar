@@ -96,10 +96,10 @@ export class CardetailsformComponent implements OnInit {
         this.carProductList.carsProductId = 0;
         this.carProductList.isActive = this.carProductForm.value.isActive;
         this.carProductList.SessionId = seesionId;
-        this.rest.post('CarsProduct/Post', this.carProductList)
-          .subscribe(data => {debugger
-            this.gId = data.carsProductId;
-            if (data.carsProductId != null) {
+        this.rest.post('carsProduct', this.carProductList)
+          .subscribe(data => {
+            this.gId = data;
+            if (data != null) {
               this.toastr.success('New product save successful!');
               this.allclear();
               this.redirect();

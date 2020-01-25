@@ -6,12 +6,13 @@ import { CanActivateGuardService } from './services/can-activate-guard.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { HomeDetailsComponent } from './home/home-details/home-details.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   //{ path: "", redirectTo: "login", pathMatch: "full" },
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent },
-  { path: "registration", component: SignUpComponent }, 
+  { path: "registration", component: RegistrationComponent }, 
   {
     path: 'admin', component: ContentComponent, canActivate: [ CanActivateGuardService ], data: { expectedRole: "Employee" }, children: [
       // lazy routing
